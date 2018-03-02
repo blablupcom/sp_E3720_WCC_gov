@@ -94,6 +94,7 @@ start_url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
 #### READ HTML 1.1 - no "lxml"
 
 html = urllib2.urlopen(url)
+print html
 soup = BeautifulSoup(html, 'lxml')
 
 #### SCRAPE DATA
