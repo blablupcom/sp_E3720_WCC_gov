@@ -86,10 +86,10 @@ def convert_mth_strings ( mth_string ):
 #### VARIABLES 1.0
 
 entity_id = "E3720_WCC_gov"
-url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
+url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page=1"
 errors = 0
 data = []
-
+start_url = "url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
 
 #### READ HTML 1.1 - no "lxml"
 
@@ -100,7 +100,7 @@ soup = BeautifulSoup(html, 'lxml')
 
 
 for i in range(1, 12):
-    html = urllib2.urlopen(url+str(i))
+    html = urllib2.urlopen(start_url+str(i))
     soup = BeautifulSoup(html, 'lxml')
     block = soup.find('table')
     links = block.findAll('a', href=True)
