@@ -89,7 +89,7 @@ entity_id = "E3720_WCC_gov"
 url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page=1"
 errors = 0
 data = []
-start_url = "url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
+start_url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
 
 #### READ HTML 1.1 - no "lxml"
 
