@@ -93,16 +93,15 @@ start_url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
 
 #### READ HTML 1.1 - no "lxml"
 
-#html = urllib2.urlopen(url)
-#print html
-#soup = BeautifulSoup(html, 'lxml')
+html = requests.get(url)
+soup = BeautifulSoup(html.text, 'lxml')
 
 #### SCRAPE DATA
 
 
 for i in range(1, 12):
-    html = urllib2.urlopen(start_url+str(i))
-    soup = BeautifulSoup(html, 'lxml')
+    html = requests.get(start_url+str(i))
+    soup = BeautifulSoup(html.text, 'lxml')
     block = soup.find('table')
     links = block.findAll('a', href=True)
     for link in links:
