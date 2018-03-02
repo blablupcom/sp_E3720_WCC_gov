@@ -93,15 +93,15 @@ start_url = "https://apps.warwickshire.gov.uk/OpenData/categories/finance?page="
 
 #### READ HTML 1.1 - no "lxml"
 
-html = requests.get(url)
-soup = BeautifulSoup(html.text, "html.parser")
+html = urllib2.urlopen(url)
+soup = BeautifulSoup(html, "html.parser")
 
 #### SCRAPE DATA
 
 
 for i in range(1, 12):
-    html = requests.get(start_url+str(i))
-    soup = BeautifulSoup(html.text, "html.parser")
+    html = urllib2.urlopen(start_url+str(i))
+    soup = BeautifulSoup(html, "html.parser")
     block = soup.find('table')
     links = block.findAll('a', href=True)
     for link in links:
@@ -110,7 +110,7 @@ for i in range(1, 12):
         suburl = 'http://apps.warwickshire.gov.uk/' + link['href']
         if 'payments-to-suppliers' in suburl:
             html2 = urllib2.urlopen(suburl)
-            soup2 = BeautifulSoup(html2, 'lxml')
+            soup2 = BeautifulSoup(html2,  "html.parser")
             block = soup2.find('dt', text=re.compile("CSV")).find_next('dd').find('a')
             if block:
                 sublink = block['href']
